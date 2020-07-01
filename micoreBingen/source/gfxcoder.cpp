@@ -201,6 +201,7 @@ void gfxcoder::metadata_start()
     metadata->lds_size=0;
     metadata->private_size=0;
     metadata->wave_size=64;
+    metadata->nargs=0;
 }
 void gfxcoder::metadata_set_lds_size( uint32_t n )
 {
@@ -236,7 +237,7 @@ void gfxcoder::metadata_set_vgprcnt( uint32_t n )
 }
 void gfxcoder::metadata_set_arg( uint8_t size, uint8_t offs, uint8_t kind, uint8_t type )
 {
-    metadata->args[argidx++]={size,offs,kind,type};
+    metadata->args[metadata->nargs++]={size,offs,kind,type};
 }
 void gfxcoder::metadata_end()
 {

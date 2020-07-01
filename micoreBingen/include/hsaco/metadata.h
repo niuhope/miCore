@@ -25,11 +25,11 @@ struct metadata_t{
 
 #define arg_kind_direct 0x0
 #define arg_kind_globuf 0x1
+
 #define arg_type_u32    0x0
 #define arg_type_u64    0x1
 #define arg_type_f32    0x2
 #define arg_type_f64    0x3
 #define arg_type_f16    0x4
-#define arg_type_bf16   0x5
 
 #endif

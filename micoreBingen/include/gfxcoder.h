@@ -1,9 +1,14 @@
 ﻿#ifndef __gfxcoder_h__
 #define __gfxcoder_h__
 
+#include<vector>
+#include<string>
+#include<algorithm>
 #include"hsaco/hsaco.h"
 #include"gcnisa/gcnisa.h"
 #include"mcode.h"
+
+using namespace std;
 
 class gfxcoder
 {
@@ -24,6 +29,7 @@ private:
     void metadata_set_wave_size( uint32_t );
     void metadata_set_sgprcnt( uint32_t );
     void metadata_set_vgprcnt( uint32_t );
+    void metadata_set_arg( uint8_t, uint8_t, uint8_t, uint8_t );
     void metadata_end();
 
     void padding2d();
