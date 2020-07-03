@@ -16,44 +16,6 @@ ny   : 0x40
 bs   : 0x44
 */
 
-/*
-==========================================================================================
-for( int i=0; i<6; i++ ){
-    sdata[0*448+lane*7+0]=c[i][0];
-    sdata[1*448+lane*7+1]=c[i][1];
-    sdata[2*448+lane*7+2]=c[i][2];
-    sdata[3*448+lane*7+3]=c[i][3];
-    sdata[4*448+lane*7+4]=c[i][4];
-    sdata[5*448+lane*7+5]=c[i][5];
-}
-==========================================================================================
-bbase+=gidz*bgs+gidy*yldb
-bo=batch*xldb+y*nx+x
-batch=tidx/(grid_x*grid_y)
-lcell=tidx%(grid_x*grid_y)
-cellx=lcell%grid_x
-celly=lcell/grid_y
-sidx[lane*3+0]=batch
-sidx[lane*3+1]=cellx
-sidx[lane*3+2]=celly
-==========================================================================================
-for( int i=0; i<6; ++i ){
-    u=(i*64+lane)%6
-    v=(i*64+lane)/6
-    {celly,cellx,batch}=sidx[v]
-    x=cellx*6+u
-    y=celly*6
-    if((batch<bs)&&(x<nx)){
-        if((y+0)<ny){ out[batch*xldb+y*nx+x]=sdata[0*448+v*7+u] }
-        if((y+1)<ny){ out[batch*xldb+y*nx+x]=sdata[1*448+v*7+u] }
-        if((y+2)<ny){ out[batch*xldb+y*nx+x]=sdata[2*448+v*7+u] }
-        if((y+3)<ny){ out[batch*xldb+y*nx+x]=sdata[3*448+v*7+u] }
-        if((y+4)<ny){ out[batch*xldb+y*nx+x]=sdata[4*448+v*7+u] }
-        if((y+5)<ny){ out[batch*xldb+y*nx+x]=sdata[5*448+v*7+u] }
-    }
-}
-*/
-
 void gfxcoder::sco3x3q6_otx( uint32_t relu )
 {
     uint32_t a[8][8], b[6][8], c[6][6], d_a[8], s_a[8], d_b[6], s_b[6];
@@ -132,6 +94,20 @@ void gfxcoder::sco3x3q6_otx( uint32_t relu )
         metadata_set_group_size(64);
         metadata_set_sgprcnt(41);
         metadata_set_vgprcnt(114);
+        metadata_set_arg(8,0x00,arg_kind_globuf,arg_type_f32);
+        metadata_set_arg(4,0x08,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x0c,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(8,0x10,arg_kind_direct,arg_type_u64);
+        metadata_set_arg(8,0x18,arg_kind_direct,arg_type_u64);
+        metadata_set_arg(8,0x20,arg_kind_direct,arg_type_u64);
+        metadata_set_arg(4,0x28,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x2c,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(8,0x30,arg_kind_globuf,arg_type_f32);
+        metadata_set_arg(4,0x38,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x3c,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x40,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x44,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x48,arg_kind_direct,arg_type_u32);
     }
     metadata_end();
 

@@ -92,6 +92,19 @@ void gfxcoder::sco3x3q6_dtx()
         metadata_set_group_size(64);
         metadata_set_sgprcnt(56);
         metadata_set_vgprcnt(121);
+        metadata_set_arg(8,0x00,arg_kind_globuf,arg_type_f32);
+        metadata_set_arg(4,0x08,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x0c,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(8,0x10,arg_kind_direct,arg_type_u64);
+        metadata_set_arg(8,0x18,arg_kind_direct,arg_type_u64);
+        metadata_set_arg(8,0x20,arg_kind_direct,arg_type_u64);
+        metadata_set_arg(4,0x28,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x2c,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(8,0x30,arg_kind_globuf,arg_type_f32);
+        metadata_set_arg(4,0x38,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x3c,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x40,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x44,arg_kind_direct,arg_type_u32);
     }
     metadata_end();
 

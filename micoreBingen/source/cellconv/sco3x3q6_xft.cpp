@@ -56,6 +56,13 @@ void gfxcoder::sco3x3q6_xft( uint32_t flip )
         metadata_set_group_size(64);
         metadata_set_sgprcnt(30);
         metadata_set_vgprcnt(83);
+        metadata_set_arg(8,0x00,arg_kind_globuf,arg_type_f32);
+        metadata_set_arg(4,0x08,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x0c,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(8,0x10,arg_kind_globuf,arg_type_f32);
+        metadata_set_arg(4,0x18,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x1c,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x20,arg_kind_direct,arg_type_u32);
     }
     metadata_end();
 

@@ -60,6 +60,14 @@ void gfxcoder::sfft5x5_c2r_perm( uint32_t mask )
         metadata_set_group_size(256);
         metadata_set_sgprcnt(28);
         metadata_set_vgprcnt(56);
+        metadata_set_arg(8,0x00,arg_kind_globuf,arg_type_f32);
+        metadata_set_arg(4,0x08,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x0c,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(8,0x10,arg_kind_globuf,arg_type_f32);
+        metadata_set_arg(4,0x18,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x1c,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x20,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x24,arg_kind_direct,arg_type_u32);
     }
     metadata_end();
 

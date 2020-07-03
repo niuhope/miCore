@@ -43,6 +43,13 @@ void gfxcoder::padding2d()
         metadata_set_group_size(256);
         metadata_set_sgprcnt(27);
         metadata_set_vgprcnt(8);
+        metadata_set_arg(8,0x00,arg_kind_globuf,arg_type_u32);
+        metadata_set_arg(8,0x08,arg_kind_globuf,arg_type_u32);
+        metadata_set_arg(4,0x10,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x14,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x18,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x1c,arg_kind_direct,arg_type_u32);
+        metadata_set_arg(4,0x20,arg_kind_direct,arg_type_u32);
     }
     metadata_end();
 
