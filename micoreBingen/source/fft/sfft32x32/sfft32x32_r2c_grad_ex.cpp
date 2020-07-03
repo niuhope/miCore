@@ -109,7 +109,7 @@ void gfxcoder::sfft5x5_r2c_grad_ex()
     const uint32_t cvo  =v34;
 
     metadata_start();
-	{
+    {
         metadata_set_lds_size(0x8840);
         metadata_set_kernarg_align(4);
         metadata_set_kernarg_size(68);

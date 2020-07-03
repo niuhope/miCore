@@ -112,7 +112,7 @@ void gfxcoder::sfft5x5_r2c_grad_pad()
     const uint32_t cvo  =v34;
 
     metadata_start();
-	{
+    {
         metadata_set_lds_size(0x8840);
         metadata_set_kernarg_align(4);
         metadata_set_kernarg_size(72);
@@ -168,9 +168,9 @@ void gfxcoder::sfft5x5_r2c_grad_pad()
     //imap=gidy/(gridx*gridy)
     //cell=gidy%(gridx*gridy)
     //cellx=cell%gridx
-    //celly=cell/gridx	
+    //celly=cell/gridx  
     //ox=cell_x*tx-pad_x+x;
-	//oy=cell_y*ty-pad_y;
+    //oy=cell_y*ty-pad_y;
     //d_r+=imap*ldy+(cell_y==0?0:oy)*nx
     //rvo=chn*ldx+ox
     //======================================================================

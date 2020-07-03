@@ -1742,7 +1742,7 @@
     v_add_f32(c[ 2].y,c[2].y,c[6].y);     \
     v_add_f32(c[ 3].x,c[3].x,c[7].x);     \
     v_add_f32(c[ 3].y,c[3].y,c[7].y);     \
-	/*==============stage2==============*/\
+    /*==============stage2==============*/\
     v_add_f32(c[0].x,c[0].x,c[2].x);      \
     v_add_f32(c[0].y,c[0].y,c[2].y);      \
     v_add_f32(d[6].x,c[ 1].x,c[ 3].x);    \
@@ -2649,7 +2649,7 @@ __lable__(0);                                 \
 #define FFT32x32_C2R_ST_SPLICE(__base,__vo,__c,__flipx,__icell,__ncells,__vax,__vay,__nx){\
     v_cmp_u32(s2,__icell,__ncells,lt);              \
     v_cmp_u32(__flipx,__vax,lt);                    \
-	s_shl_b32(__nx,__nx,2);                         \
+    s_shl_b32(__nx,__nx,2);                         \
     s_and_b64(exec,vcc,s2);                         \
     stg_b32(__base,__vo,0x0,__c[ga_brev4[0]].x);    \
     S_ADD_U64_U32(__base,__base,__nx);              \

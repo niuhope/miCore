@@ -70,7 +70,7 @@ void gfxcoder::sfft5x5_c2r_grid_perm( uint32_t mask )
     const uint32_t valy   =v34;
 
     metadata_start();
-	{
+    {
         metadata_set_lds_size(0x4600);
         metadata_set_kernarg_align(4);
         metadata_set_kernarg_size(68);

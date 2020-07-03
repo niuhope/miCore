@@ -1300,7 +1300,7 @@ __lable__(0);                                 \
 #define FFT16x16_C2R_ST_SPLICE(__base,__vo,__c,__flipx,__icell,__ncells,__vax,__vay,__nx){\
     v_cmp_u32(s2,__icell,__ncells,lt);              \
     v_cmp_u32(__flipx,__vax,lt);                    \
-	s_shl_b32(__nx,__nx,2);                         \
+    s_shl_b32(__nx,__nx,2);                         \
     s_and_b64(exec,vcc,s2);                         \
     stg_b32(__base,__vo,0x0,__c[ga_brev3[0]].x);    \
     S_ADD_U64_U32(__base,__base,__nx);              \

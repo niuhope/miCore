@@ -56,7 +56,7 @@ void gfxcoder::sfft4x4_r2c_perm_flip( uint32_t mask )
     const uint32_t cvo  =v18;
 
     metadata_start();
-	{
+    {
         metadata_set_lds_size(0x2440);
         metadata_set_kernarg_align(4);
         metadata_set_kernarg_size(40);

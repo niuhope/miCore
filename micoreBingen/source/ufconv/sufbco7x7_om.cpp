@@ -1,6 +1,5 @@
 ﻿#include"../../include/gfxcoder.h"
 
-
 void gfxcoder::sufbco7x7_om()
 {
     uint32_t c[8][8], a[2][8], b[2][8];

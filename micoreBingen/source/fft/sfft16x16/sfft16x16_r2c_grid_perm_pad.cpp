@@ -74,7 +74,7 @@ void gfxcoder::sfft4x4_r2c_grid_perm_pad()
     const uint32_t cvo    =v18;
 
     metadata_start();
-	{
+    {
         metadata_set_lds_size(0x2440);
         metadata_set_kernarg_align(4);
         metadata_set_kernarg_size(72);
@@ -126,9 +126,9 @@ void gfxcoder::sfft4x4_r2c_grid_perm_pad()
     s_shl_b32(s25,gidy,2);
     s_sync(lgkmcnt(0));
     //==================================================================
-	//ox=cell_x*tx-pad_x+x;
-	//oy=cell_y*ty-pad_y;
-	//d_r+=gidy*ldy+imap*ldx+(icell_y==0?0:oy)*nx+ox;
+    //ox=cell_x*tx-pad_x+x;
+    //oy=cell_y*ty-pad_y;
+    //d_r+=gidy*ldy+imap*ldx+(icell_y==0?0:oy)*nx+ox;
     //==================================================================
     s_shr_b32(grid_y,grid,16);
     s_shr_b32(tile_y,tile,16);

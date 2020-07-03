@@ -49,7 +49,7 @@ void gfxcoder::sfft5x5_c2r_g1x9()
     const uint32_t tid  =v56;
 
     metadata_start();
-	{
+    {
         metadata_set_lds_size(0x4600);
         metadata_set_kernarg_align(5);
         metadata_set_kernarg_size(32);
