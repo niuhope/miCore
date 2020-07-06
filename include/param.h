@@ -8,7 +8,8 @@
 #include"macro.h"
 
 typedef struct{
-    size_t   sperm;
+    magic_t  amag ;
+    magic_t  cmag ;
     uint32_t id   ;
     uint32_t ng   ;
     uint32_t m    ;

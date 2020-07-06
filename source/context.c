@@ -433,7 +433,8 @@ __local_func int context_init( context_t* p_ctx )
         return istatus_invalid_binary;
     }
 
-    p_ctx->kern_idx =&p_ctx->kern[2];
+    p_ctx->kern_perm=&p_ctx->kern[1];
+    p_ctx->kern_idx =&p_ctx->kern_perm[1];
     p_ctx->kern_ufco=&p_ctx->kern_idx[1];
     p_ctx->kern_fco =&p_ctx->kern_ufco[36];
     p_ctx->kern_bco =&p_ctx->kern_fco[10];

@@ -66,7 +66,7 @@ MICOREAPIENTRY micore_status_t micore_build_parambox_fconv( micore_parambox_t h,
     ID(h)=(int)algo;
     if(algo==micore_conv_algo_flexgemm){
         if(((TSHAPEF(sb)->nx|TSHAPEF(sb)->ny|TSHAPEF(sb)->nz)==1)&&((pad|str|dla)==0)){
-            status=build_param_ufconv( PUFCO(h), TSHAPE(sa), TSHAPEF(sb), ng, 0 );
+            status=build_param_uffconv( PUFCO(h), TSHAPE(sa), TSHAPEF(sb), ng );
         } else {
             status=build_param_fconv( PCO(h), TSHAPE(sa), TSHAPEF(sb), TSHAPE(sc), pad, str, dla, ng );
             ID(h)=1;
@@ -87,7 +87,7 @@ MICOREAPIENTRY micore_status_t micore_build_parambox_bconv( micore_parambox_t h,
     ID(h)=(int)algo;
     if(algo==micore_conv_algo_flexgemm){
         if(((TSHAPEF(sb)->nx|TSHAPEF(sb)->ny|TSHAPEF(sb)->nz)==1)&&((pad|str|dla)==0)){
-            status=build_param_ufconv( PUFCO(h), TSHAPE(sc), TSHAPEF(sb), ng, 1 );
+            status=build_param_ufbconv( PUFCO(h), TSHAPE(sc), TSHAPEF(sb), ng );
         } else {
             status=build_param_bconv( PCO(h), TSHAPE(sc), TSHAPEF(sb), TSHAPE(sa), pad, str, dla, ng );
             ID(h)=1;

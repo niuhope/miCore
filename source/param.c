@@ -30,16 +30,39 @@ static uint32_t choose_optimal_cell_id( uint32_t anx, uint32_t any, uint32_t bnx
     }
     return id;
 }
-__local_func int build_param_ufconv( param_ufconv_t* p, const tensorshape_t* sa, const tensorshape_filter_t* sb, uint32_t ng, int dir )
+__local_func int build_param_uffconv( param_ufconv_t* p, const tensorshape_t* sa, const tensorshape_filter_t* sb, uint32_t ng )
 {
-    static const uint32_t selx=0x924924u;
-    static const uint32_t sely=0x500000u;
+    static const uint32_t selx=0x924924;
+    static const uint32_t sely=0x500000;
     uint32_t alignment, id, sx, sy;
     p->m=sa->nx*sa->ny;
-    p->n=dir==0?sb->qnc:sb->pnc;
-    p->k=dir==0?sb->pnc:sb->qnc;
-    p->id=choose_optimal_routine_ufconv( p->m, p->n, p->k, dir );
-    alignment=(p->id&0xffff)>0&&(p->id&0xffff)<3?255:127;
+    p->n=sb->qnc;
+    p->k=sb->pnc;
+    p->id=choose_optimal_routine_ufconv( p->m, p->n, p->k, 0 );
+    alignment=((p->id&0xffff)>0)&&((p->id&0xffff)<3)?255:127;
+    p->ng=ng;
+    p->dimx=p->m*sa->bs;
+    p->ntidx=PSIZE(p->dimx,alignment);
+    id=(p->id&0xffff)*3+(p->id>>16);
+    sx=(selx>>(id<<1))&0x3;
+    sy=(sely>>(id<<1))&0x3;
+    p->amag=idiv_magic(p->ntidx>>sx,p->m>>sx);
+    if(sx!=sy){
+        p->cmag=idiv_magic(p->ntidx>>sy,p->m>>sy);
+    }
+    return istatus_success;
+}
+__local_func int build_param_ufbconv( param_ufconv_t* p, const tensorshape_t* sa, const tensorshape_filter_t* sb, uint32_t ng )
+{
+    static const uint32_t selx=0x924924;
+    static const uint32_t sely=0x500000;
+    uint32_t alignment, id, sx, sy;
+    if((sb->qnc&7u)!=0) return istatus_invalid_value;
+    p->m=sa->nx*sa->ny;
+    p->n=sb->pnc;
+    p->k=sb->qnc;
+    p->id=choose_optimal_routine_ufconv( p->m, p->n, p->k, 1 );
+    alignment=((p->id&0xffff)>0)&&((p->id&0xffff)<3)?255:127;
     p->ng=ng;
     p->dimx=p->m*sa->bs;
     p->ntidx=PSIZE(p->dimx,alignment);
@@ -90,9 +113,8 @@ __local_func int build_param_fconv( param_conv_t* p, const tensorshape_t* sa, co
     p->bny=sb->ny;
     p->ldc=p->cnx*p->cny;
     p->m=p->ldc*p->bs;
-    p->id=choose_optimal_routine_conv(p->n,p->k);
-    if((p->k&7)!=0){ p->id=0; } else { p->id+=1; }
-    temp=p->id<3?255:127;
+    p->id=choose_optimal_routine_fconv(p->n,p->k);
+    temp=(p->id==1)||(p->id==4)?127:255;
     p->ntidx=PSIZE(p->m,temp);
     p->lda=p->pnx*p->pny;
     if(p->pad!=0){
@@ -146,8 +168,8 @@ __local_func int build_param_bconv( param_conv_t* p, const tensorshape_t* sa, co
     p->bny=sb->ny;
     p->ldc=p->cnx*p->cny;
     p->m=p->ldc*p->bs;
-    p->id=choose_optimal_routine_conv(p->n,p->k);
-    temp=p->id<2?255:127;
+    p->id=choose_optimal_routine_bconv(p->n,p->k);
+    temp=(p->id==0)||(p->id==3)?127:255;
     p->ntidx=PSIZE(p->m,temp);
     p->lda=p->pnx*p->pny;
     if(p->pad!=0){
@@ -157,7 +179,8 @@ __local_func int build_param_bconv( param_conv_t* p, const tensorshape_t* sa, co
             p->lda=(temp+(1^(temp&1)))<<6;
         }
     }
-    pk=PSIZE(p->k,7);
+    temp=p->id!=3?7:15;
+    pk=PSIZE(p->k,temp);
     p->ags=p->lda*p->inc;
     p->spad=(ng<<2)*p->ags;
     p->sidx=(p->ntidx<<3)+(pk<<2)+128;

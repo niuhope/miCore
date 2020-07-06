@@ -5,8 +5,8 @@ __local_func void lk_ufconv( kernel_t* kern, const param_ufconv_t* p, void* c, v
     char argbuf[64];
     void* config[]={ HIP_LAUNCH_PARAM_BUFFER_POINTER, &argbuf[0], HIP_LAUNCH_PARAM_BUFFER_SIZE, &kern->argsize, HIP_LAUNCH_PARAM_END };
     uint32_t id=p->id&0xffff;
-    uint32_t shx=(id>0)&&(id<3)?8:7;
-    uint32_t shy=4+id;
+    uint32_t shx=id>0&&id<3?8:7;
+    uint32_t shy=5+id;
     *((void*   *)&argbuf[0x00])=a      ;
     *((void*   *)&argbuf[0x08])=b      ;
     *((uint32_t*)&argbuf[0x10])=p->ng  ;

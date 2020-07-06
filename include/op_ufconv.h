@@ -4,6 +4,6 @@
 #include"kernel.h"
 #include"param.h"
 
-__local_func void lk_uffconv( kernel_t*, const param_ufconv_t*, void*, void*, void*, float, hipStream_t );
+__local_func void lk_ufconv( kernel_t*, const param_ufconv_t*, void*, void*, void*, float, hipStream_t );
 
 #endif
