@@ -126,7 +126,7 @@ MICOREAPIENTRY size_t micore_get_auxsize( micore_parambox_t h )
         uint64_t cbks=p->cbks;
         size=((abks+bbks+cbks)*(p->ng<<8));
     } else
-    if(algo==6){
+    if(algo==3){
         param_fftconv_t* p=PFFTCO(h);
         uint64_t abks=p->abks;
         uint64_t bbks=p->bbks;
@@ -143,7 +143,7 @@ MICOREAPIENTRY void micore_fconv( micore_handle_t hCtx, micore_parambox_t hPar, 
     case 0 : uffconv( CTX(hCtx), PUFCO(hPar), c, (void*)a, (void*)b, alpha, relu, s ); break;
     case 1 : fconv( CTX(hCtx), PCO(hPar), aux, c, (void*)a, (void*)b, alpha, relu, s ); break;
     case 2 : cellconv2d( CTX(hCtx), PCELLCO(hPar), aux, c, (void*)a, (void*)b, alpha, relu, 0, s ); break;
-    case 6 : fftconv2d( CTX(hCtx), PFFTCO(hPar), aux, c, (void*)a, (void*)b, alpha, relu, 0, s ); break;
+    case 3 : fftconv2d( CTX(hCtx), PFFTCO(hPar), aux, c, (void*)a, (void*)b, alpha, relu, 0, s ); break;
     default : break;
     }
 }
@@ -154,7 +154,7 @@ MICOREAPIENTRY void micore_bconv( micore_handle_t hCtx, micore_parambox_t hPar, 
     case 0 : ufbconv( CTX(hCtx), PUFCO(hPar), c, (void*)a, (void*)b, alpha, s ); break;
     case 1 : bconv( CTX(hCtx), PCO(hPar), aux, c, (void*)a, (void*)b, alpha, s ); break;
     case 2 : cellconv2d( CTX(hCtx), PCELLCO(hPar), aux, c, (void*)a, (void*)b, alpha, 0, 1, s ); break;
-    case 6 : fftconv2d( CTX(hCtx), PFFTCO(hPar), aux, c, (void*)a, (void*)b, alpha, 0, 1, s ); break;
+    case 3 : fftconv2d( CTX(hCtx), PFFTCO(hPar), aux, c, (void*)a, (void*)b, alpha, 0, 1, s ); break;
     default : break;
     }
 }

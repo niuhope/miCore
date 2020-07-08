@@ -9,8 +9,6 @@ typedef struct{
     hipDevice_t device;
     hipModule_t module;
     kernel_t*   kern;
-    kernel_t*   kern_perm;
-    kernel_t*   kern_idx;
     kernel_t*   kern_ufco;
     kernel_t*   kern_fco;
     kernel_t*   kern_bco;
