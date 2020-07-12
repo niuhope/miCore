@@ -1,7 +1,7 @@
 ﻿#ifndef __pgmrsrc_h__
 #define __pgmrsrc_h__
 
-#include<stdint.h>
+#include<cstdint>
 
 enum:uint32_t{
     amdgpu_fp_mode_rn=0,

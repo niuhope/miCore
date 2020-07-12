@@ -1,7 +1,7 @@
 #ifndef __msgpack_h__
 #define __msgpack_h__
 
-#include<stdint.h>
+#include<cstdint>
 #include"../strop.h"
 
 #define REV_BYTES_U16(n) static_cast<uint16_t>((((n)&0xff)<<8)|((n)>>8))

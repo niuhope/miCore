@@ -1,8 +1,8 @@
 ﻿#ifndef __hsaco_h__
 #define __hsaco_h__
 
-#include<stdlib.h>
-#include<memory.h>
+#include<cstdlib>
+#include<memory>
 #include"../elf.h"
 #include"kernelOb.h"
 #include"metadata.h"

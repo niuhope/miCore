@@ -220,7 +220,7 @@
 #define MMA_16x16x1_F32_F32(c,a,b)  mma_16x16x1_f32_f32(c,a,b,c)
 #define MMA_16x16x4_F32_F32(c,a,b)  mma_16x16x4_f32_f32(c,a,b,c)
 #define MMA_16x16x4_F32_F16(c,a,b)  mma_16x16x4_f32_f16(c,a,b,c)
-#define MMA_16x16x16_F32_F16(c,a,b) mma_16x16x16_f32_f1(c,a,b,c)
+#define MMA_16x16x16_F32_F16(c,a,b) mma_16x16x16_f32_f16(c,a,b,c)
 #define MMA_16x16x2_F32_BF16(c,a,b) mma_16x16x2_f32_bf16(c,a,b,c)
 #define MMA_16x16x8_F32_BF16(c,a,b) mma_16x16x8_f32_bf16(c,a,b,c)
 #define MMA_4x4x1_F32_F32(c,a,b)    mma_4x4x1_f32_f32(c,a,b,c)

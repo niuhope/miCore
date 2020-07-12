@@ -1,4 +1,4 @@
-﻿#include<stdio.h>
+﻿#include<cstdio>
 #include"include/gfxcoder.h"
 #include"include/hsaco/generator.h"
 

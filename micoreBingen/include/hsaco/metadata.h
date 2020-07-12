@@ -1,7 +1,7 @@
 #ifndef __metadata__
 #define __metadata__
 
-#include<stdint.h>
+#include<cstdint>
 
 struct arginfo_t{
     uint8_t size;
