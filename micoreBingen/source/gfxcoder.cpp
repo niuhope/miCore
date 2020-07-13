@@ -198,10 +198,10 @@ const vector<string>& gfxcoder::kernel_names() const
 }
 void gfxcoder::metadata_start()
 {
+    metadata->nargs=0;
     metadata->lds_size=0;
     metadata->private_size=0;
     metadata->wave_size=64;
-    metadata->nargs=0;
 }
 void gfxcoder::metadata_set_lds_size( uint32_t n )
 {

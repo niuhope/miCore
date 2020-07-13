@@ -84,6 +84,7 @@ uint32_t generator::get_section_size_note( const metadata_t* meta, const uint32_
     for( uint32_t i=0; i<nkern; ++i ){
         memset( buf, 0, MAX_BUF_SIZE );
         istrcpy( &buf[istrcpy( buf, knames[i].c_str() )], ".kd" );
+        p+=metadata_get_args_size( &meta[i] );
         p+=msgpack_encode_str( nullptr, ".name" );
         p+=msgpack_encode_str( nullptr, knames[i].c_str() );
         p+=msgpack_encode_str( nullptr, ".symbol" );
@@ -104,7 +105,6 @@ uint32_t generator::get_section_size_note( const metadata_t* meta, const uint32_
         p+=msgpack_encode_uint( nullptr, meta[i].sgprcnt );
         p+=msgpack_encode_str( nullptr, ".vgpr_count" );
         p+=msgpack_encode_uint( nullptr, meta[i].vgprcnt );
-        p+=metadata_get_args_size( &meta[i] );
     }
     p+=msgpack_encode_str( nullptr, "amdhsa.version" );
     p+=msgpack_encode_array( nullptr, k_amdhsa_version, 2 );
@@ -228,6 +228,7 @@ void generator::gen_section_note( const metadata_t* meta, const uint32_t* cosize
     for( uint32_t i=0; i<nkern; ++i ){
         memset( buf, 0, MAX_BUF_SIZE );
         istrcpy( &buf[istrcpy( buf, knames[i].c_str() )], ".kd" );
+        p+=metadata_encode_args( &note[p], &meta[i] );
         p+=msgpack_encode_str( &note[p], ".name" );
         p+=msgpack_encode_str( &note[p], knames[i].c_str() );
         p+=msgpack_encode_str( &note[p], ".symbol" );
@@ -248,7 +249,6 @@ void generator::gen_section_note( const metadata_t* meta, const uint32_t* cosize
         p+=msgpack_encode_uint( &note[p], meta[i].sgprcnt );
         p+=msgpack_encode_str( &note[p], ".vgpr_count" );
         p+=msgpack_encode_uint( &note[p], meta[i].vgprcnt );
-        p+=metadata_encode_args( &note[p], &meta[i] );
     }
     p+=msgpack_encode_str( &note[p], "amdhsa.version" );
     msgpack_encode_array( &note[p], k_amdhsa_version, 2 );
